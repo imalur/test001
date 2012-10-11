@@ -42,9 +42,11 @@
 	        android:layout_marginLeft="10dp"
 	        android:layout_marginRight="10dp"
 	        android:layout_weight="1"
+	        android:hint="@string/login"
+	        android:singleLine="true"      
 	        android:background="@drawable/text_selector"  
-	        android:text="Login"/>
-	        	    
+	        />
+	        	   
 
 	    <EditText
 	        android:id="@+id/etPassword"
@@ -54,9 +56,11 @@
 	        android:layout_marginLeft="10dp"
 	        android:layout_marginRight="10dp"
 	        android:layout_weight="1"
+	        android:hint="@string/password"
+	        android:singleLine="true"
 	        android:background="@drawable/text_selector"
 	        android:inputType="textPassword"	        
-	        android:text="Password" />
+	         />
 
 	    <CheckBox
 	        android:id="@+id/chbShowPassword"
@@ -82,7 +86,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             	        
-	        android:text="Login" />
+	        android:text="@string/login" />
 
 	    <Button
 	        android:id="@+id/btnSignUp"

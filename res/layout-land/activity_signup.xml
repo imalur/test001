@@ -86,7 +86,7 @@
 				        android:layout_marginRight="10dp"
 				        android:layout_weight="1"
 				        android:background="@drawable/text_selector"  
-				        android:text="Email"/>	   
+				        android:text="@string/email"/>	   
 			        <Spinner
 				        android:id="@+id/spinnerCountry"
 				        android:layout_width="match_parent"
@@ -111,7 +111,7 @@
 		        android:layout_weight="1"
 		        android:background="@drawable/text_selector"
 		        android:inputType="textPassword"	        
-		        android:text="Password" />
+		        android:text="@string/password" />
 		      <Spinner
 		        android:id="@+id/spinnerSex"
 		        android:layout_width="match_parent"

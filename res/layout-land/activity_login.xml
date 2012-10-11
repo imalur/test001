@@ -50,7 +50,7 @@
 		        android:layout_marginRight="10dp"
 		        android:layout_weight="1"
 		        android:background="@drawable/text_selector"  
-		        android:text="Login"/>
+		        android:text="@string/login"/>
 	        <TextView		        
 		        android:layout_width="match_parent"
 		        android:layout_height="match_parent"	        	        		        
@@ -73,7 +73,7 @@
 		        android:layout_weight="1"
 		        android:background="@drawable/text_selector"
 		        android:inputType="textPassword"	        
-		        android:text="Password" />
+		        android:text="@string/password" />
 	
 		    <CheckBox
 		        android:id="@+id/chbShowPassword"
@@ -105,7 +105,7 @@
 	            android:textColor="#FFFFFF"
 	            android:textStyle="bold"
 	            	        
-		        android:text="Login" />
+		        android:text="@string/login" />
             
             <Button
 		        android:id="@+id/btnSignUp"

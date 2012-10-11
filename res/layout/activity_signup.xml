@@ -42,8 +42,10 @@
 	        android:layout_marginLeft="10dp"
 	        android:layout_marginRight="10dp"
 	        android:layout_weight="1"
-	        android:background="@drawable/text_selector"  
-	        android:text="Login"/>
+	        android:background="@drawable/text_selector"
+	        android:singleLine="true"
+	        android:hint="@string/login"  
+	        />
 		<EditText
 	        android:id="@+id/etEmail"
 	        android:layout_width="match_parent"
@@ -53,7 +55,8 @@
 	        android:layout_marginRight="10dp"
 	        android:layout_weight="1"
 	        android:background="@drawable/text_selector"  
-	        android:text="Email"/>	        	    
+	        android:singleLine="true"
+	        android:hint="@string/email"/>	        	    
 	    <EditText
 	        android:id="@+id/etPasswordSignup"
 	        android:layout_width="match_parent"
@@ -63,8 +66,9 @@
 	        android:layout_marginRight="10dp"
 	        android:layout_weight="1"
 	        android:background="@drawable/text_selector"
-	        android:inputType="textPassword"	        
-	        android:text="Password" />
+	        android:inputType="textPassword"	
+	        android:singleLine="true"        
+	        android:hint="@string/password" />
 	    <EditText
 	        android:id="@+id/etConfirm"
 	        android:layout_width="match_parent"
@@ -74,8 +78,9 @@
 	        android:layout_marginRight="10dp"
 	        android:layout_weight="1"
 	        android:background="@drawable/text_selector"
-	        android:inputType="textPassword"	        
-	        android:text="Confirm" />
+	        android:inputType="textPassword"
+	        android:singleLine="true"	        
+	        android:hint="@string/confirm_password" />
 		<Spinner
 	        android:id="@+id/spinnerCountry"
 	        android:layout_width="match_parent"
