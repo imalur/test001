@@ -1,0 +1,130 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutLoginParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:orientation="vertical">
+    
+    <LinearLayout 
+		android:id="@+id/layoutHeader"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"	    
+	    android:orientation="vertical"
+	    android:background="@drawable/header_gradient"
+	    android:layout_weight="2"
+	    >
+
+        <TextView
+            android:id="@+id/tvLoginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"	
+            android:text="Global Ads"
+            android:textColor="#e26c09"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+	</LinearLayout>
+	
+	    
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/content_green_gradient"
+        android:layout_weight="2" >
+
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+             >
+	        <EditText
+		        android:id="@+id/etLogin"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"	        	        
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_weight="1"
+		        android:background="@drawable/text_selector"  
+		        android:text="Login"/>
+	        <TextView		        
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"	        	        		        
+		        android:layout_weight="1"		        
+		        android:text=""/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_weight="1">
+             <EditText
+		        android:id="@+id/etPassword"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"	              
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_weight="1"
+		        android:background="@drawable/text_selector"
+		        android:inputType="textPassword"	        
+		        android:text="Password" />
+	
+		    <CheckBox
+		        android:id="@+id/chbShowPassword"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"	        
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_weight="1"
+		        
+		        android:text="Show Password" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+            <Button
+		        android:id="@+id/btnLogin"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"	        
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_weight="1"	
+		        	        	        
+		        android:background="@drawable/blue_button_shape_selector"             
+	            android:textColor="#FFFFFF"
+	            android:textStyle="bold"
+	            	        
+		        android:text="Login" />
+            
+            <Button
+		        android:id="@+id/btnSignUp"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"	        
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_weight="1"	
+		        
+		        android:background="@drawable/green_button_shape_selector"            
+	            android:textColor="#FFFFFF"
+	            android:textStyle="bold"
+	            	        
+		        android:text="Sign up" />
+        </TableRow>
+
+        
+    </TableLayout>
+    
+
+</LinearLayout>

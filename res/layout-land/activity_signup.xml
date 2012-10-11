@@ -1,0 +1,152 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutLoginParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:orientation="vertical">
+    
+    <LinearLayout 
+		android:id="@+id/layoutHeaderSignup"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"	    
+	    android:orientation="vertical"
+	    android:background="@drawable/header_gradient"
+	    android:layout_weight="2"
+	    >
+
+        <TextView
+            android:id="@+id/tvLoginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"	
+            android:text="Global Ads"
+            android:textColor="#e26c09"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+	</LinearLayout>
+	
+    
+    
+    
+	<LinearLayout 
+		android:id="@+id/layoutBottomSignup"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"	    
+	    android:orientation="vertical"
+	    android:background="@drawable/content_green_gradient"
+	    android:layout_weight="4">	    
+		
+		     	    
+	   <TableLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="5" >
+
+	    <TableRow
+	        android:id="@+id/tableRow1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" >
+	        
+		        <EditText
+			        android:id="@+id/etLoginSignup"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"	        	        
+			        android:layout_marginBottom="10dp"
+			        android:layout_marginLeft="10dp"
+			        android:layout_marginRight="10dp"
+			        android:layout_weight="1"
+			        android:background="@drawable/text_selector"  
+			        android:text="Login"/>
+		        <EditText
+			        android:id="@+id/etConfirm"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"	              
+			        android:layout_marginBottom="10dp"
+			        android:layout_marginLeft="10dp"
+			        android:layout_marginRight="10dp"
+			        android:layout_weight="1"
+			        android:background="@drawable/text_selector"
+			        android:inputType="textPassword"	        
+			        android:text="Confirm" />
+	        
+	    </TableRow>
+
+	    <TableRow
+	        android:id="@+id/tableRow2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" >
+			        <EditText
+				        android:id="@+id/etEmail"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"	        	        
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:layout_marginRight="10dp"
+				        android:layout_weight="1"
+				        android:background="@drawable/text_selector"  
+				        android:text="Email"/>	   
+			        <Spinner
+				        android:id="@+id/spinnerCountry"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:layout_marginRight="10dp"
+				        android:layout_weight="1" />
+	    </TableRow>
+
+	    <TableRow
+	        android:id="@+id/tableRow3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" >
+		     <EditText
+		        android:id="@+id/etPasswordSignup"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"	              
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_weight="1"
+		        android:background="@drawable/text_selector"
+		        android:inputType="textPassword"	        
+		        android:text="Password" />
+		      <Spinner
+		        android:id="@+id/spinnerSex"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_weight="1" />		
+	    </TableRow>
+
+	    
+	</TableLayout>
+	    
+		
+		
+	    <Button
+	        android:id="@+id/btnAccept"
+	        android:layout_width="300dp"
+	        android:layout_height="wrap_content"	
+	        android:layout_gravity="center_horizontal"        
+	        android:layout_marginBottom="10dp"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_weight="1"	
+	        
+	        android:background="@drawable/green_button_shape_selector"            
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            	        
+	        android:text="Accept" />
+
+	    
+	    
+	</LinearLayout>
+
+	
+
+</LinearLayout>
