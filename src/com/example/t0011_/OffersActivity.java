@@ -42,27 +42,28 @@ public class OffersActivity extends Activity implements OnClickListener{
     
     // create fake data for ListView
     void fillData()  {
+    	int[] images = { 
+    			R.drawable.icon_lamp,
+    			R.drawable.icon_clock,
+    			R.drawable.icon_office
+    	};
+    	
+    	String[] companies = { 
+    			"Illitch Iron",
+    			"Company2",
+    			"Office",
+    			"AzovSteel"
+    	};
+
+    	String[] offers = { "lamp", "clock", "---" , "gadget", "widget", "pad"};
+   	
     	Campaign c;
-    	for(int i =0; i < 4; i++){
+    	for(int i =0; i < 16; i++){
 	    	c= new Campaign();
-	    	c.companyName = "Illitch Iron";
-	    	c.offer = "lamp";
-	    	c.image = R.drawable.icon_lamp;
-	    	c.rate = 1;
-	    	campaign.add(c);
-	    	
-	    	c = new Campaign();
-	    	c.companyName = "Company2";
-	    	c.offer = "clock";
-	    	c.image = R.drawable.icon_clock;
-	    	c.rate = 2;
-	    	campaign.add(c);
-	    	
-	    	c = new Campaign();
-	    	c.companyName = "Office";
-	    	c.offer = "---";
-	    	c.image = R.drawable.icon_office;
-	    	c.rate = 4.5;
+	    	c.setCompanyName(companies[i % companies.length]);
+	    	c.setOffer(offers[i % offers.length]);
+	    	c.setImage(images[i % images.length]);
+	    	c.setRate(i*0.5);
 	    	campaign.add(c);
     	}
     }

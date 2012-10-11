@@ -25,7 +25,7 @@
 		    android:layout_marginRight="1dp"		    	
 		    android:background="@drawable/offerscreen_button_shape_selector"       
             android:textColor="#FFFFFF"	    
-		    android:text="Account"
+		    android:text="@string/account"
 		    />
 	    <Button
 	        android:id="@+id/btnBusiness"
@@ -34,7 +34,7 @@
 		    android:layout_weight="1" 
 		    android:background="@drawable/offerscreen_button_shape_selector"             
             android:textColor="#FFFFFF"
-			android:text="Business"		    		    
+			android:text="@string/business"		    		    
 		    />
 	    <Button
 	        android:id="@+id/btnType"
@@ -45,7 +45,7 @@
 		    android:layout_marginRight="5dp"    
 		    android:background="@drawable/offerscreen_button_shape_selector"             
             android:textColor="#FFFFFF"		    
-		    android:text="Type"
+		    android:text="@string/type"
 		    />
 	</LinearLayout>
 </LinearLayout>

@@ -56,11 +56,11 @@ public class CampaignAdapter extends BaseAdapter{
 		((LinearLayout) view.findViewById(R.id.layoutItem)).setBackgroundResource(backcolor);
 		
 		// установка данных (пока без дат)
-		((TextView) view.findViewById(R.id.tvOfferText)).setText(campaign.offer);
-		((TextView) view.findViewById(R.id.tvCompanyName)).setText(campaign.companyName);
-		((TextView) view.findViewById(R.id.tvType)).setText(campaign.type);
-		((TextView) view.findViewById(R.id.tvRate)).setText(String.valueOf(campaign.rate));
-		((ImageView) view.findViewById(R.id.ivImage)).setImageResource(campaign.image);		
+		((TextView) view.findViewById(R.id.tvOfferText)).setText(campaign.getOffer());
+		((TextView) view.findViewById(R.id.tvCompanyName)).setText(campaign.getCompanyName());
+		((TextView) view.findViewById(R.id.tvType)).setText(campaign.getType());
+		((TextView) view.findViewById(R.id.tvRate)).setText(String.valueOf(campaign.getRate()));
+		((ImageView) view.findViewById(R.id.ivImage)).setImageResource(campaign.getImage());		
 		
 		return view;
 	}

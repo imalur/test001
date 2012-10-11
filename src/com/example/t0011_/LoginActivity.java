@@ -20,6 +20,8 @@ public class LoginActivity extends Activity implements OnClickListener{
 	EditText etLogin;
 	EditText etPassword;
 	CheckBox chbShowPassword;
+	Toast currentToast;
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,15 +58,13 @@ public class LoginActivity extends Activity implements OnClickListener{
 			// check input format
 			boolean isValid = inputValidator(); 						
 			if (! isValid){
-				String toast = "Incorrect input format";
-				Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+				showToast("Incorrect input format");				
 				return;
 			}
 			// check login correctness
 			boolean isLogged = fakeLogin();
 			if (!isLogged){
-				String toast = "Incorrect Login or Password";
-				Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+				showToast("Incorrect Login or Password");				
 				return;
 			}
 			// Login
@@ -91,23 +91,31 @@ public class LoginActivity extends Activity implements OnClickListener{
 		etPassword.setInputType(inputType);
 	}
 	
-	// check login and Password input format
-	private boolean inputValidator(){
-		boolean isValid = true;
+	// check Login and Password input format
+	private boolean inputValidator(){		
 		String login = etLogin.getText().toString();
 		String password = etPassword.getText().toString();
 		String regex = "[A-Za-z0-9]{3,10}";
 		
-		isValid &= TextValidator.Match(login, regex);
-		isValid &= TextValidator.Match(password, regex);
+		boolean isValid = true;
+		isValid &= TextValidator.match(login, regex);
+		isValid &= TextValidator.match(password, regex);
 		
 		return isValid;
 	}
 	
-	// check login and Password correctness (dummy)
+	// check Login and Password correctness (dummy)
 	private boolean fakeLogin(){	
 		String login = etLogin.getText().toString();
 		String password = etPassword.getText().toString();				
 		return login.equals("Login") && password.equals("Password");
+	}
+	
+	// show only one message at a time 
+	private void showToast(String message){
+		if (currentToast != null && currentToast.getView().isShown())
+			return;
+		currentToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+		currentToast.show();
 	}
 }

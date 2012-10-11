@@ -28,8 +28,10 @@ public class SignupActivity extends Activity implements OnClickListener{
         btnAccept.setOnClickListener(this);
         
         // fill spinners
+        ArrayAdapter<String> adapter;
+        
         String[] countries = {"Ukraine", "Russia", "USA", "China"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, countries);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, countries);
         spinnerCountry.setAdapter(adapter);
         spinnerCountry.setPrompt("Country");
         //spinnerCountry.setSelection(0);

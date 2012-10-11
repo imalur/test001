@@ -101,7 +101,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             	        
-	        android:text="Sign up" />
+	        android:text="@string/sign_up" />
 	    
 	</LinearLayout>
 </LinearLayout>
