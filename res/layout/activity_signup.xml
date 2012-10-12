@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"	
-            android:text="Global Ads"
+            android:text="@string/global_ads"
             android:textColor="#e26c09"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -87,7 +87,8 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="10dp"
 	        android:layout_marginLeft="10dp"
-	        android:layout_marginRight="10dp"
+	        android:layout_marginRight="10dp"	  
+	        android:background="@drawable/spinner_background"      
 	        android:layout_weight="1" />
 	        	        
 	  <!--  android:background="@drawable/spinner_background" -->  	        
@@ -100,7 +101,9 @@
 	        android:layout_marginBottom="10dp"
 	        android:layout_marginLeft="10dp"
 	        android:layout_marginRight="10dp"
-	        android:layout_weight="1" />		
+	        android:background="@drawable/spinner_background" 
+	        android:layout_weight="1" 
+	        />		
 	    <Button
 	        android:id="@+id/btnAccept"
 	        android:layout_width="match_parent"
@@ -114,7 +117,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             	        
-	        android:text="Accept" />
+	        android:text="@string/accept" />
 
 	    
 	    

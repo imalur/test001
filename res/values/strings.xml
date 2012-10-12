@@ -14,5 +14,7 @@
     <string name="account">Account</string>
     <string name="business">Business</string>
     <string name="type">Type</string>
+    <string name="global_ads">Global Ads</string>
+    <string name="accept">Accept</string>
 
 </resources>

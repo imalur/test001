@@ -27,9 +27,10 @@ public final class R {
         public static final int offerscreen_button_shape_selector=0x7f02000d;
         public static final int red_textbox=0x7f02000e;
         public static final int spinner_background=0x7f02000f;
-        public static final int spinner_button_blue=0x7f020010;
-        public static final int spinner_button_red=0x7f020011;
-        public static final int text_selector=0x7f020012;
+        public static final int spinner_default=0x7f020010;
+        public static final int spinner_focused=0x7f020011;
+        public static final int spinner_pressed=0x7f020012;
+        public static final int text_selector=0x7f020013;
     }
     public static final class id {
         public static final int btnAccept=0x7f070018;
@@ -53,7 +54,7 @@ public final class R {
         public static final int layoutItem=0x7f070019;
         public static final int layoutLoginParent=0x7f070000;
         public static final int lvMain=0x7f07000c;
-        public static final int menu_settings=0x7f070021;
+        public static final int menu_settings=0x7f070022;
         public static final int spinnerCountry=0x7f070016;
         public static final int spinnerSex=0x7f070017;
         public static final int tableRow1=0x7f070009;
@@ -64,6 +65,7 @@ public final class R {
         public static final int tvLoginTitle=0x7f070002;
         public static final int tvOfferText=0x7f07001b;
         public static final int tvRate=0x7f07001f;
+        public static final int tvSpinnerEl=0x7f070021;
         public static final int tvStartDate=0x7f07001d;
         public static final int tvType=0x7f070020;
     }
@@ -72,6 +74,7 @@ public final class R {
         public static final int activity_offers=0x7f030001;
         public static final int activity_signup=0x7f030002;
         public static final int item=0x7f030003;
+        public static final int spinner=0x7f030004;
     }
     public static final class menu {
         public static final int activity_login=0x7f060000;
@@ -79,11 +82,13 @@ public final class R {
         public static final int activity_xxx=0x7f060002;
     }
     public static final class string {
+        public static final int accept=0x7f04000f;
         public static final int account=0x7f04000b;
         public static final int app_name=0x7f040000;
         public static final int business=0x7f04000c;
         public static final int confirm_password=0x7f040009;
         public static final int email=0x7f040008;
+        public static final int global_ads=0x7f04000e;
         public static final int hello_world=0x7f040001;
         public static final int login=0x7f040006;
         public static final int menu_settings=0x7f040002;

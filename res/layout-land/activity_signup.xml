@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"	
-            android:text="Global Ads"
+            android:text="@string/global_ads"
             android:textColor="#e26c09"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -55,10 +55,11 @@
 			        android:layout_height="wrap_content"	        	        
 			        android:layout_marginBottom="10dp"
 			        android:layout_marginLeft="10dp"
-			        android:layout_marginRight="10dp"
+			        
 			        android:layout_weight="1"
+			        android:singleLine="true"
 			        android:background="@drawable/text_selector"  
-			        android:text="Login"/>
+			        android:hint="@string/login"/>
 		        <EditText
 			        android:id="@+id/etConfirm"
 			        android:layout_width="match_parent"
@@ -67,9 +68,10 @@
 			        android:layout_marginLeft="10dp"
 			        android:layout_marginRight="10dp"
 			        android:layout_weight="1"
+			        android:singleLine="true"
 			        android:background="@drawable/text_selector"
-			        android:inputType="textPassword"	        
-			        android:text="Confirm" />
+			        android:inputType="textPassword"		                
+			        android:hint="@string/confirm_password" />
 	        
 	    </TableRow>
 
@@ -82,11 +84,11 @@
 				        android:layout_width="match_parent"
 				        android:layout_height="wrap_content"	        	        
 				        android:layout_marginBottom="10dp"
-				        android:layout_marginLeft="10dp"
-				        android:layout_marginRight="10dp"
+				        android:layout_marginLeft="10dp"				        
 				        android:layout_weight="1"
+				        android:singleLine="true"
 				        android:background="@drawable/text_selector"  
-				        android:text="@string/email"/>	   
+				        android:hint="@string/email"/>	   
 			        <Spinner
 				        android:id="@+id/spinnerCountry"
 				        android:layout_width="match_parent"
@@ -94,6 +96,7 @@
 				        android:layout_marginBottom="10dp"
 				        android:layout_marginLeft="10dp"
 				        android:layout_marginRight="10dp"
+				        android:background="@drawable/spinner_background"
 				        android:layout_weight="1" />
 	    </TableRow>
 
@@ -106,12 +109,12 @@
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"	              
 		        android:layout_marginBottom="10dp"
-		        android:layout_marginLeft="10dp"
-		        android:layout_marginRight="10dp"
+		        android:layout_marginLeft="10dp"		        
 		        android:layout_weight="1"
+		        android:singleLine="true"
 		        android:background="@drawable/text_selector"
 		        android:inputType="textPassword"	        
-		        android:text="@string/password" />
+		        android:hint="@string/password" />
 		      <Spinner
 		        android:id="@+id/spinnerSex"
 		        android:layout_width="match_parent"
@@ -119,6 +122,7 @@
 		        android:layout_marginBottom="10dp"
 		        android:layout_marginLeft="10dp"
 		        android:layout_marginRight="10dp"
+		        android:background="@drawable/spinner_background"
 		        android:layout_weight="1" />		
 	    </TableRow>
 
@@ -141,7 +145,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             	        
-	        android:text="Accept" />
+	        android:text="@string/accept" />
 
 	    
 	    

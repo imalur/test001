@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"	
-            android:text="Global Ads"
+            android:text="@string/global_ads"
             android:textColor="#e26c09"
             android:textSize="20sp"
             android:textStyle="bold" />

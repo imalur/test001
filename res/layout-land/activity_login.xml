@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"	
-            android:text="Global Ads"
+            android:text="@string/global_ads"
             android:textColor="#e26c09"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -49,8 +49,9 @@
 		        android:layout_marginLeft="10dp"
 		        android:layout_marginRight="10dp"
 		        android:layout_weight="1"
-		        android:background="@drawable/text_selector"  
-		        android:text="@string/login"/>
+		        android:background="@drawable/text_selector"
+		        android:singleLine="true"  
+		        android:hint="@string/login"/>
 	        <TextView		        
 		        android:layout_width="match_parent"
 		        android:layout_height="match_parent"	        	        		        
@@ -72,8 +73,9 @@
 		        android:layout_marginRight="10dp"
 		        android:layout_weight="1"
 		        android:background="@drawable/text_selector"
-		        android:inputType="textPassword"	        
-		        android:text="@string/password" />
+		        android:inputType="textPassword"
+		        android:singleLine="true"	        
+		        android:hint="@string/password" />
 	
 		    <CheckBox
 		        android:id="@+id/chbShowPassword"

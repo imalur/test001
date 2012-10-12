@@ -31,13 +31,16 @@ public class SignupActivity extends Activity implements OnClickListener{
         ArrayAdapter<String> adapter;
         
         String[] countries = {"Ukraine", "Russia", "USA", "China"};
+        //adapter = new ArrayAdapter<String>(this, R.layout.spinner, R.id.tvSpinnerEl, countries);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, countries);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCountry.setAdapter(adapter);
         spinnerCountry.setPrompt("Country");
         //spinnerCountry.setSelection(0);
         
         String[] sex = {"male", "female"};
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sex);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSex.setAdapter(adapter);
         spinnerSex.setPrompt("Sex");
         //spinnerSex.setSelection(0);        
