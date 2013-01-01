@@ -57,7 +57,7 @@ public class OffersActivity extends Activity implements OnClickListener{
 
     	String[] offers = { "lamp", "clock", "---" , "gadget", "widget", "pad"};
    	
-    	Campaign c;
+    	Campaign c; 
     	for(int i =0; i < 16; i++){
 	    	c= new Campaign();
 	    	c.setCompanyName(companies[i % companies.length]);
