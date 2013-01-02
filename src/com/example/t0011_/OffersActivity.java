@@ -1,7 +1,6 @@
 package com.example.t0011_;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
