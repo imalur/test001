@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -53,7 +54,7 @@ public class CampaignAdapter extends BaseAdapter{
 		int backcolor = R.drawable.listview_blue_gradient;
 		if (position % 2 == 0 )
 			backcolor = R.drawable.listview_green_gradient;
-		((LinearLayout) view.findViewById(R.id.layoutItem)).setBackgroundResource(backcolor);
+		view.findViewById(R.id.layoutItem).setBackgroundResource(backcolor);
 		
 		// установка данных (пока без дат)
 		((TextView) view.findViewById(R.id.tvOfferText)).setText(campaign.getOffer());
