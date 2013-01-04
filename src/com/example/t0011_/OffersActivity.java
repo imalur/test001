@@ -3,18 +3,23 @@ package com.example.t0011_;
 import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class OffersActivity extends Activity implements OnClickListener{
+public class OffersActivity extends FragmentActivity 
+	implements OnClickListener, LoaderCallbacks<Cursor>{
 
-	ArrayList<Campaign> campaign = new ArrayList<Campaign>();
-	CampaignAdapter adapter;
-	
+	CampaignCursorAdapter adapter;
+	ListView lvMain;
 	Button btnAccount;
 	
     @Override
@@ -25,47 +30,17 @@ public class OffersActivity extends Activity implements OnClickListener{
         btnAccount = (Button) findViewById(R.id.btnAccount);
         btnAccount.setOnClickListener(this);
         
-        // prepare listView
-        fillData();
-        adapter = new CampaignAdapter(this, campaign);
-        
-        ListView lvMain = (ListView) findViewById(R.id.lvMain);
+        // вместо курсора вторым параметром передаем null
+        adapter = new CampaignCursorAdapter(this, null);
+        // инициализация менеджера загрузки
+        final int LOADER_ID = 0; 
+        getSupportLoaderManager().initLoader(LOADER_ID, null, this);
+
+        lvMain = (ListView) findViewById(R.id.lvMain);
         lvMain.setAdapter(adapter);
         
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {        
-        return true;
-    }
-    
-    // create fake data for ListView
-    void fillData()  {
-    	int[] images = { 
-    			R.drawable.icon_lamp,
-    			R.drawable.icon_clock,
-    			R.drawable.icon_office
-    	};
-    	
-    	String[] companies = { 
-    			"Illitch Iron",
-    			"Company2",
-    			"Office",
-    			"AzovSteel"
-    	};
-
-    	String[] offers = { "lamp", "clock", "---" , "gadget", "widget", "pad"};
-   	
-    	Campaign c; 
-    	for(int i =0; i < 16; i++){
-	    	c= new Campaign();
-	    	c.setCompanyName(companies[i % companies.length]);
-	    	c.setOffer(offers[i % offers.length]);
-	    	c.setImage(images[i % images.length]);
-	    	c.setRate(i*0.5);
-	    	campaign.add(c);
-    	}
-    }
 
 	@Override
 	public void onClick(View v) {
@@ -75,6 +50,27 @@ public class OffersActivity extends Activity implements OnClickListener{
 			startActivity(intent);
 			break;
 		}
+		
+	}
+
+	// необходимо реализовать три метода для LoaderManager.LoaderCallbacks<Cursor>
+    // 1. создание loader-курсора
+	@Override
+	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
+		return new CursorLoader(this, CampaignProvider.CAMPAIGN_URI,
+				null, null, null, null);
+	}
+	// 2. окончание загрузки - подмена курсора
+	@Override
+	public void onLoadFinished(Loader<Cursor> arg0, Cursor cursor) {
+		adapter.swapCursor(cursor);
+		
+	}
+	
+	// 3. отмена загрузки - установка курсора в null
+	@Override
+	public void onLoaderReset(Loader<Cursor> arg0) {
+		adapter.swapCursor(null);
 		
 	}
     
