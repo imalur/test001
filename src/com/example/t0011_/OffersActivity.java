@@ -6,12 +6,18 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -38,7 +44,7 @@ public class OffersActivity extends FragmentActivity
 
         lvMain = (ListView) findViewById(R.id.lvMain);
         lvMain.setAdapter(adapter);
-        
+        registerForContextMenu(lvMain);
     }
 
 
@@ -74,4 +80,62 @@ public class OffersActivity extends FragmentActivity
 		
 	}
     
+	// == КОНТЕКСТНОЕ ИЕНЮ ДЛЯ ОПЕРАЦИЙ CRUD
+	// константы для идентификации пунктов меню
+    final int CNTX_MENU_ADD = 0;
+    final int CNTX_MENU_EDT = 1;
+    final int CNTX_MENU_DEL = 2;
+
+    // регистрация представления для меню – в методе onCreate активити
+    
+    // создание контекстного меню
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+    		ContextMenuInfo menuInfo) {
+    	super.onCreateContextMenu(menu, v, menuInfo);
+    	// добавляем три пункта
+    	menu.add(0, CNTX_MENU_ADD, 0, "Add New Record");
+    	menu.add(0, CNTX_MENU_EDT, 0, "Edit Record");
+    	menu.add(0, CNTX_MENU_DEL, 0, "Delete Record");    	
+    }
+    
+    // обработчик выбора пункта меню  
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+    	// получаем id выбранного элемента (значение поля _id из БД) 
+    	AdapterContextMenuInfo  info = (AdapterContextMenuInfo) item.getMenuInfo();
+    	long id = info.id; 
+    	// текущее действие
+    	int mode = CRUDDialog.MODE_NONE;
+    	// обработка пунктов меню
+    	switch (item.getItemId()) {
+		case CNTX_MENU_ADD:			
+			mode = CRUDDialog.MODE_ADD;
+			break;
+		case CNTX_MENU_EDT:
+			mode = CRUDDialog.MODE_EDT;
+			break;
+		case CNTX_MENU_DEL:
+			mode = CRUDDialog.MODE_DEL;
+			break;
+		default:
+			break;
+		}
+    	// запускаем диалоговое окно для редактирования и передаем данные о режиме и id
+        Bundle args = new Bundle();
+        args.putLong(CRUDDialog.KEY_ID, id);
+        args.putInt(CRUDDialog.KEY_MODE, mode);
+        
+        CRUDDialog dialog = new CRUDDialog();
+        dialog.setArguments(args);
+
+        // начало транзакции для динамического добавления фрагмента в приложение
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(dialog, "DIALOG_TAG");
+        ft.commit();
+    	
+    	return super.onContextItemSelected(item);
+    }
+
 }

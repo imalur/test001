@@ -1,5 +1,8 @@
 package com.example.t0011_;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,7 +13,7 @@ public class CampaignDB extends SQLiteOpenHelper {
 	// Константы - имена БД, таблицы и версия БД
 	public final static String DB_NAME = "mydb";
 	public final static String DB_TABLE = "business";
-	public final static int DB_VERSION = 1;
+	public final static int DB_VERSION = 3;
 	
 	// Константы - имена столбцов
 	public final static String KEY_ID = "_id";
@@ -25,6 +28,15 @@ public class CampaignDB extends SQLiteOpenHelper {
 	// Объект БД 
 	public final SQLiteDatabase db;	;
 
+	// словарь для картинок (имя - ресурс)
+	public final static Map<String, Integer> images;
+	static{
+		images = new HashMap<String, Integer>();
+		images.put("lamp", R.drawable.icon_lamp);
+		images.put("clock", R.drawable.icon_clock);
+		images.put("office", R.drawable.icon_office);
+	}
+	
 	public CampaignDB(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
 		db = getWritableDatabase();
@@ -42,7 +54,7 @@ public class CampaignDB extends SQLiteOpenHelper {
 				+ KEY_START_DATE + " INTEGER, "
 				+ KEY_END_DATE + " INTEGER, "
 				+ KEY_RATE + " REAL NOT NULL, "
-				+ KEY_IMAGE + " INTEGER" + ");";
+				+ KEY_IMAGE + " TEXT" + ");";
 		db.execSQL(sql);
 		//fillData();
 	}
@@ -81,34 +93,38 @@ public class CampaignDB extends SQLiteOpenHelper {
 		return db.delete(DB_TABLE, whereClause, null);
 	}
 	
-	// тестовое заполнение базы 
+	// тестовое заполнение базы в отдельном потоке
     void fillData()  {
-		String sql = "DROP TABLE IF EXISTS " + DB_TABLE ;
-		db.execSQL(sql);
-		onCreate(db);
+    	new Thread( new Runnable() {			
+			@Override
+			public void run() {
+				String sql = "DROP TABLE IF EXISTS " + DB_TABLE ;
+				db.execSQL(sql);
+				onCreate(db);
+				
+		    	String[] img = images.keySet().toArray(new String[0]) ;
+
+		    	String[] companies = { 
+		    			"Illitch Iron",
+		    			"Company2",
+		    			"Office",
+		    			"AzovSteel"
+		    	};
+		    	String[] offers = { "lamp", "clock", "---" , "gadget", "widget", "pad"};
+		   	
+		    	ContentValues values = new ContentValues(); 
+		    	for(int i = 0; i < 16; i++){
+			    	values.put(KEY_NAME, companies[i % companies.length]);
+			    	values.put(KEY_OFFER, offers[i % offers.length]);
+			    	values.put(KEY_IMAGE, img[i % img.length]);
+			    	values.put(KEY_RATE, i*0.5);
+			    	values.put(KEY_TYPE, "Type");
+			    	db.insert(DB_TABLE, null, values);
+		    	}
+				
+			}
+		}).start();
 		
-    	int[] images = { 
-    			R.drawable.icon_lamp,
-    			R.drawable.icon_clock,
-    			R.drawable.icon_office
-    	};    	
-    	String[] companies = { 
-    			"Illitch Iron",
-    			"Company2",
-    			"Office",
-    			"AzovSteel"
-    	};
-    	String[] offers = { "lamp", "clock", "---" , "gadget", "widget", "pad"};
-   	
-    	ContentValues values = new ContentValues(); 
-    	for(int i = 0; i < 16; i++){
-	    	values.put(KEY_NAME, companies[i % companies.length]);
-	    	values.put(KEY_OFFER, offers[i % offers.length]);
-	    	values.put(KEY_IMAGE, images[i % images.length]);
-	    	values.put(KEY_RATE, i*0.5);
-	    	values.put(KEY_TYPE, "Type");
-	    	db.insert(DB_TABLE, null, values);
-    	}
     }
 	
 }

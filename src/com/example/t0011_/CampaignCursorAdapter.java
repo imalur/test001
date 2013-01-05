@@ -1,5 +1,8 @@
 package com.example.t0011_;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
@@ -30,8 +33,14 @@ public class CampaignCursorAdapter extends CursorAdapter{
 				((TextView) view.findViewById(R.id.tvType)).setText(cursor.getString(typeCol));
 				int rateCol = cursor.getColumnIndex(CampaignDB.KEY_RATE);
 				((TextView) view.findViewById(R.id.tvRate)).setText(String.valueOf(cursor.getDouble(rateCol)));
-				int imgCol = cursor.getColumnIndex(CampaignDB.KEY_IMAGE);
-				((ImageView) view.findViewById(R.id.ivImage)).setImageResource(cursor.getInt(imgCol));		
+				
+				
+				// вначале я хотел хранить картинки в int, но потом решил, что коды ресурсов 
+				// могут меняться, и безопаснее обойтись словарем
+				int imgCol = cursor.getColumnIndex(CampaignDB.KEY_IMAGE);				
+				String imageName = cursor.getString(imgCol);
+				int image = CampaignDB.images.get(imageName);
+				((ImageView) view.findViewById(R.id.ivImage)).setImageResource(image);		
 				
 		
 	}
