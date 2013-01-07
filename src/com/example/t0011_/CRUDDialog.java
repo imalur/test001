@@ -1,6 +1,8 @@
 package com.example.t0011_;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -14,8 +16,10 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class CRUDDialog extends DialogFragment implements LoaderCallbacks<Cursor>{
 	
@@ -35,6 +39,8 @@ public class CRUDDialog extends DialogFragment implements LoaderCallbacks<Cursor
 	EditText etOffer;
 	EditText etType;
 	EditText etRate;
+	TextView tvStartDate;
+	TextView tvEndDate;
 	Spinner spinnerImage;
 	View crudView;
 
@@ -69,6 +75,22 @@ public class CRUDDialog extends DialogFragment implements LoaderCallbacks<Cursor
             String imgName = data.getString(imgCol);
             int pos = ((ArrayAdapter<String>)spinnerImage.getAdapter()).getPosition(imgName); 
             spinnerImage.setSelection(pos);
+            
+			DateHelper dateHelper = new DateHelper();
+			int startCol = data.getColumnIndex(CampaignDB.KEY_START_DATE);
+			String startDate = data.getString(startCol);
+			String text = "Start Date";
+			if (dateHelper.parse(startDate))
+				text = startDate;					
+			tvStartDate.setText(text);
+			
+			
+			int endCol = data.getColumnIndex(CampaignDB.KEY_END_DATE);
+			String endDate = data.getString(endCol);
+			text = "End Date";
+			if (dateHelper.parse(endDate))
+				text = endDate;
+			tvEndDate.setText(text);
         }
 
 		
@@ -89,10 +111,15 @@ public class CRUDDialog extends DialogFragment implements LoaderCallbacks<Cursor
         etType = (EditText) crudView.findViewById(R.id.etType);
         etRate = (EditText) crudView.findViewById(R.id.etRate);
         spinnerImage = (Spinner) crudView.findViewById(R.id.spinnerImage);
+        tvStartDate = (TextView) crudView.findViewById(R.id.tvStartDate);
+        tvStartDate.setOnClickListener(dateClickListener);
+        tvEndDate = (TextView) crudView.findViewById(R.id.tvEndDate);
+        tvEndDate.setOnClickListener(dateClickListener);
         
         ArrayAdapter<String> adapter;        
         String[] img = CampaignDB.images.keySet().toArray(new String[0]) ;
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, img);
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,img);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerImage.setAdapter(adapter);
         spinnerImage.setPrompt("Images");
         
@@ -133,13 +160,13 @@ public class CRUDDialog extends DialogFragment implements LoaderCallbacks<Cursor
  
         // обработчики нажатия кнопок 
         dialogBuilder.setNegativeButton("Cancel", null);        
-        dialogBuilder.setPositiveButton("OK", clickListener);
+        dialogBuilder.setPositiveButton("OK", btnOkClickListener);
  
         return dialogBuilder.create();
     }
 
  // Обработчик нажатия на кнопку OK
-    OnClickListener clickListener = new OnClickListener() {
+    OnClickListener btnOkClickListener = new OnClickListener() {
     	 
         @Override
         public void onClick(DialogInterface dialog, int which) {
@@ -150,8 +177,15 @@ public class CRUDDialog extends DialogFragment implements LoaderCallbacks<Cursor
             contentValues.put(CampaignDB.KEY_OFFER, etOffer.getText().toString());
             contentValues.put(CampaignDB.KEY_TYPE, etType.getText().toString());
             contentValues.put(CampaignDB.KEY_RATE, etRate.getText().toString());
-            contentValues.put(CampaignDB.KEY_IMAGE, spinnerImage.getSelectedItem().toString());
+            contentValues.put(CampaignDB.KEY_IMAGE, spinnerImage.getSelectedItem().toString());            
 
+            DateHelper dateStart = new DateHelper();
+            if (dateStart.parse(tvStartDate.getText().toString()))
+            	contentValues.put(CampaignDB.KEY_START_DATE, dateStart.toString());
+            DateHelper dateEnd = new DateHelper();
+            if (dateEnd.parse(tvEndDate.getText().toString()))
+            	contentValues.put(CampaignDB.KEY_END_DATE, dateEnd.toString());
+            
             switch(mode){
                 case MODE_ADD:
                     // операция вставки через поставщик контента
@@ -179,5 +213,35 @@ public class CRUDDialog extends DialogFragment implements LoaderCallbacks<Cursor
         }		
     };
 
+    // обработчик нажатия на дату
+    View.OnClickListener dateClickListener = new View.OnClickListener() {
+
+		@Override
+		public void onClick(View v) {			
+			final TextView textView = (TextView) v;
+			DateHelper date = new DateHelper();
+			date.parse(textView.getText().toString());
+			
+			OnDateSetListener startCallBack = new OnDateSetListener() {					
+			    public void onDateSet(DatePicker view, int year, int monthOfYear,
+			        int dayOfMonth) {			      
+			    	textView.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
+			    };
+			};	
+			
+			DatePickerDialog dialog = new DatePickerDialog(
+					getActivity(), 
+					startCallBack, 
+					date.getYear(),
+					date.getMonth(),
+					date.getDay());
+			dialog.show();				
+			
+
+			
+			
+		}
+    	
+    };
     
 }

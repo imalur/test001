@@ -7,31 +7,67 @@
     	android:id="@+id/etName" 
     	android:layout_width="match_parent" 
     	android:layout_height="wrap_content"
+    	android:background="@drawable/text_selector"  
     	android:hint="@string/enter_name" />
     <EditText 
     	android:id="@+id/etOffer" 
     	android:layout_width="match_parent" 
     	android:layout_height="wrap_content"
+    	android:background="@drawable/text_selector"  
     	android:hint="@string/enter_offer" />
     <EditText 
     	android:id="@+id/etType" 
     	android:layout_width="match_parent" 
     	android:layout_height="wrap_content"
+    	android:background="@drawable/text_selector"  
     	android:hint="@string/enter_type" />
     <EditText 
     	android:id="@+id/etRate" 
     	android:layout_width="match_parent" 
     	android:layout_height="wrap_content"
     	android:inputType="numberDecimal"
+    	android:background="@drawable/text_selector"  
     	android:hint="@string/enter_rate" />
     <TextView
-        android:layout_width="match_parent" 
+        android:layout_width="wrap_content" 
     	android:layout_height="wrap_content"
     	android:text="@string/image"
+    	android:textColor="@android:color/white"
     	/>
     <Spinner
         android:id="@+id/spinnerImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"	              
+        android:layout_height="wrap_content"	     	
+        android:background="@drawable/spinner_background"      
          />    
+    <TextView
+        android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:text="@string/start_date"
+    	android:textColor="@android:color/white"
+    	/>
+    <TextView
+        android:id="@+id/tvStartDate"
+        android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:text="@string/start_date"
+    	android:textStyle="bold"
+    	android:textSize="22sp"
+    	android:textColor="@android:color/darker_gray"
+    	/>
+    <TextView
+        android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:text="@string/end_date"
+    	android:textColor="@android:color/white"
+    	/>
+    <TextView
+        android:id="@+id/tvEndDate"
+        android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:text="@string/end_date"
+    	android:textStyle="bold"
+    	android:textSize="22sp"
+    	android:textColor="@android:color/darker_gray"
+    	/>
 </LinearLayout>

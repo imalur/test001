@@ -11,9 +11,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class CampaignDB extends SQLiteOpenHelper {
 	// Константы - имена БД, таблицы и версия БД
-	public final static String DB_NAME = "mydb";
+	public final static String DB_NAME = "db";
 	public final static String DB_TABLE = "business";
-	public final static int DB_VERSION = 3;
+	public final static int DB_VERSION = 1;
 	
 	// Константы - имена столбцов
 	public final static String KEY_ID = "_id";
@@ -51,8 +51,8 @@ public class CampaignDB extends SQLiteOpenHelper {
 				+ KEY_NAME + " TEXT NOT NULL, "
 				+ KEY_OFFER + " TEXT NOT NULL, "
 				+ KEY_TYPE + " TEXT, "
-				+ KEY_START_DATE + " INTEGER, "
-				+ KEY_END_DATE + " INTEGER, "
+				+ KEY_START_DATE + " TEXT, "
+				+ KEY_END_DATE + " TEXT, "
 				+ KEY_RATE + " REAL NOT NULL, "
 				+ KEY_IMAGE + " TEXT" + ");";
 		db.execSQL(sql);
@@ -119,6 +119,7 @@ public class CampaignDB extends SQLiteOpenHelper {
 			    	values.put(KEY_IMAGE, img[i % img.length]);
 			    	values.put(KEY_RATE, i*0.5);
 			    	values.put(KEY_TYPE, "Type");
+			    	values.put(KEY_START_DATE, "1.2.2013");
 			    	db.insert(DB_TABLE, null, values);
 		    	}
 				

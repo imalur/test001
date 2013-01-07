@@ -95,11 +95,10 @@ public class LoginActivity extends Activity implements OnClickListener{
 	private boolean inputValidator(){		
 		String login = etLogin.getText().toString();
 		String password = etPassword.getText().toString();
-		String regex = "[A-Za-z0-9]{3,10}";
 		
 		boolean isValid = true;
-		isValid &= TextValidator.match(login, regex);
-		isValid &= TextValidator.match(password, regex);
+		isValid &= TextValidator.match(login, TextValidator.LOGIN_REGEX);
+		isValid &= TextValidator.match(password, TextValidator.LOGIN_REGEX);
 		
 		return isValid;
 	}

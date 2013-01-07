@@ -42,7 +42,21 @@ public class CampaignCursorAdapter extends CursorAdapter{
 				int image = CampaignDB.images.get(imageName);
 				((ImageView) view.findViewById(R.id.ivImage)).setImageResource(image);		
 				
-		
+				// даты
+				DateHelper date = new DateHelper();
+				int startCol = cursor.getColumnIndex(CampaignDB.KEY_START_DATE);
+				String startDate = cursor.getString(startCol);
+				String text = "From Start Date";			
+				if (date.parse(startDate))
+					text = "From " + date;					
+				((TextView) view.findViewById(R.id.tvStartDate)).setText(text);
+				
+				int endCol = cursor.getColumnIndex(CampaignDB.KEY_END_DATE);
+				String endDate = cursor.getString(endCol);
+				text = "To End Date";
+				if (date.parse(endDate))
+					text = "To " + date;
+				((TextView) view.findViewById(R.id.tvEndDate)).setText(text);
 	}
 	// создаем представление с конкретной разметкой
 	@Override
